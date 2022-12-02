@@ -1,0 +1,13 @@
+{
+  "posts": [
+    {
+      "author": "Duc Anh",
+      "title": "study",
+      "id": 2
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
