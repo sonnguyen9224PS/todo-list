@@ -18,7 +18,7 @@ function Homepage() {
       }}
     >
       <Title style={{ textAlign: "center", color: "#333", fontWeight: "bold" }}>
-        TodoList
+        <h1 style={{ color: "#32886b" }}>TodoList</h1>
       </Title>
       <Divider />
       <TodoList />
