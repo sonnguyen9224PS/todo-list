@@ -1,11 +1,12 @@
 import { Card, Button, Form, Input } from "antd";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-function Lists({ listData, handleDeleteTodo, handleUpdateTodo }) {
+import { Link, useNavigate } from "react-router-dom";
+function Lists({ listData, handleDeleteTodo, handleUpdateTodo, id }) {
   const [isUpdate, setIsUpdate] = useState(false);
+  const navigate = useNavigate();
   if (!isUpdate) {
     return (
-      <Card title="List">
+      <Card title="Todo">
         <Card
           type="inner"
           title={
@@ -15,12 +16,21 @@ function Lists({ listData, handleDeleteTodo, handleUpdateTodo }) {
             <div>
               <Button
                 onClick={() => {
+                  navigate(`detailpage/${id}`);
+                }}
+                style={{ marginRight: 10 }}
+                type="primary"
+              >
+                Detail
+              </Button>
+              <Button
+                onClick={() => {
                   setIsUpdate(true);
                 }}
                 style={{ marginRight: 10 }}
                 type="primary"
               >
-                edit
+                Edit
               </Button>
               <Button
                 type="danger"
@@ -28,7 +38,7 @@ function Lists({ listData, handleDeleteTodo, handleUpdateTodo }) {
                   handleDeleteTodo(listData.id);
                 }}
               >
-                delete
+                Delete
               </Button>
             </div>
           }

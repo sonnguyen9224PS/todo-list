@@ -2,7 +2,7 @@ import { createReducer } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
 const initialState = {
-  todoList: [],
+  todoList: JSON.parse(localStorage.getItem("todoList")) || [],
 };
 const todoListReducer = createReducer(initialState, {
   CREATE_TODOLIST: (state, action) => {
@@ -11,9 +11,11 @@ const todoListReducer = createReducer(initialState, {
       id: uuidv4(),
       ...data,
     };
+    const newTodoList = [...state.todoList, newTodo];
+    localStorage.setItem("todoList", JSON.stringify(newTodoList));
     return {
       ...state,
-      todoList: [newTodo, ...state.todoList],
+      todoList: newTodoList,
     };
   },
   DELETE_TODOLIST: (state, action) => {

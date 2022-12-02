@@ -1,6 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import axios from "axios";
 import { Button, Form, Input, Divider } from "antd";
 import {
   createToDoList,
@@ -18,7 +16,6 @@ function Todolist() {
   const [form] = Form.useForm();
   const { todoList } = useSelector((state) => state.todo);
 
-  console.log("list", todoList);
   const dispatch = useDispatch();
 
   function handleUpdateTodo(values, id) {
@@ -39,6 +36,7 @@ function Todolist() {
           handleDeleteTodo={handleDeleteTodo}
           key={index}
           listData={item}
+          id={item.id}
         />
       );
     });

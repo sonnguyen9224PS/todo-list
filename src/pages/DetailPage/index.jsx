@@ -1,25 +1,17 @@
 import { useParams, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-function Detailpage() {
+function DetailPage() {
   const { todoList } = useSelector((state) => state.todo);
-  console.log("detail", todoList);
-
   const { id } = useParams();
-  console.log("id", id);
-
-  const TodoDetail = todoList.filter((todo) => todo.id === id);
-  //   console.log("exact", TodoDetail);
-
+  const dataDetail = todoList.find((item) => item.id === id);
   function renderDetail() {
-    return TodoDetail.map((todo) => {
-      return (
-        <div key={todo.id}>
-          <p>{todo.title}</p>
-          <p>{todo.description}</p>
-        </div>
-      );
-    });
+    return (
+      <div key={dataDetail.id}>
+        <p>{dataDetail.title}</p>
+        <p>{dataDetail.description}</p>
+      </div>
+    );
   }
 
   return (
@@ -42,4 +34,4 @@ function Detailpage() {
   );
 }
 
-export default Detailpage;
+export default DetailPage;
